@@ -23,6 +23,7 @@ export function formatResult(result: any): any {
             data = result.recordset;
         }
     }
+    console.log(data);
     return data;
 }
 

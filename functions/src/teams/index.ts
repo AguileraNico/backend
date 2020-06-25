@@ -5,8 +5,8 @@ export const teams = functions.region('us-east1').https.onRequest(async (request
 
     const service = new TeamsService(request);
 
-    const res = await service.execute()
-    .catch(error => {response.send(error)});
-
-    response.send(res);
+    await service.execute()
+    .then(value => response.status(200).send(value))
+    .catch(value => response.status(500).send(value));
+    
 });

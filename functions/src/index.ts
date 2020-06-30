@@ -1,3 +1,3 @@
-const teams = require('./teams/index');
+const liga = require('./liga/index')
 
-exports.teams = teams.teams;
+exports.liga = liga.liga;

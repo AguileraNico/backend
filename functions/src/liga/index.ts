@@ -1,9 +1,9 @@
 import * as functions from 'firebase-functions';
-import { TeamsService } from './teams.service';
+import { LigaService } from './liga.service';
 
-export const teams = functions.region('us-east1').https.onRequest(async (request, response) => {
+export const liga = functions.region('us-east1').https.onRequest(async (request, response) => {
 
-    const service = new TeamsService(request);
+    const service = new LigaService(request);
 
     await service.execute()
     .then(value => 

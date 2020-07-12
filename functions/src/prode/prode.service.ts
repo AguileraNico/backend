@@ -11,6 +11,9 @@ export class ProdeService {
             case '/save-user-match': {
                 return await this.controller.saveUserMatch(this.req.body);
             }
+            case '/user-fixture': {
+                return await this.controller.userFixture(this.req.body);
+            }
         }
     }
 

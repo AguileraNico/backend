@@ -14,9 +14,6 @@ export class LigaService {
             case '/fixture': {
                 return await this.controller.fixture(this.req.body);
             }
-            case '/last-round-fixture': {
-                return await this.controller.lastRoundFixture(this.req.body);
-            }
             case '/last-round': {
                 return await this.controller.lastRound(this.req.body);
             }

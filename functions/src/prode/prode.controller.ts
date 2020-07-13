@@ -40,8 +40,33 @@ export class ProdeController {
                 const req = new db.Request(pool)
                 .input('Liga', db.Int, body.LigaCd)
                 .input('Division', db.Int, body.DivisionCd)
+                .input('Round', db.Int, body.RoundCd)
                 .input('User', db.VarChar, body.UserCd);
-                return await req.execute(queries.userFixture)
+                return await req.execute(queries.userFixtureProde)
+                    .then(function (resultSet) {
+                        pool.close();
+                        return responseOk(JSON.parse(formatResult(resultSet)))
+                    })
+                    .catch(function (err) {
+                        pool.close();
+                        return responseError(err);
+                    });
+            })
+            .catch(function (err) {
+                pool.close();
+                return responseError(err);
+            });
+    }
+
+    public userHistory = async function (body: any): Promise<any> {
+        const pool = new db.ConnectionPool(dbConfig());
+        return await pool.connect()
+            .then(async function () {
+                const req = new db.Request(pool)
+                .input('Liga', db.Int, body.LigaCd)
+                .input('Division', db.Int, body.DivisionCd)
+                .input('User', db.VarChar, body.UserCd);
+                return await req.execute(queries.userHistory)
                     .then(function (resultSet) {
                         pool.close();
                         return responseOk(JSON.parse(formatResult(resultSet)))

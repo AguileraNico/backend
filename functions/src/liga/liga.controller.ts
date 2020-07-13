@@ -53,29 +53,6 @@ export class LigaController {
             });
     }
 
-    public lastRoundFixture = async function (body: any): Promise<any> {
-        const pool = new db.ConnectionPool(dbConfig());
-        return await pool.connect()
-            .then(async function () {
-                const req = new db.Request(pool)
-                .input('Liga', db.Int, body.LigaCd)
-                .input('Division', db.Int, body.DivisionCd);
-                return await req.execute(queries.lastRoundFixture)
-                    .then(function (resultSet) {
-                        pool.close();
-                        return responseOk(JSON.parse(formatResult(resultSet)))
-                    })
-                    .catch(function (err) {
-                        pool.close();
-                        return responseError(err);
-                    });
-            })
-            .catch(function (err) {
-                pool.close();
-                return responseError(err);
-            });
-    }
-
     public lastRound = async function (body: any): Promise<any> {
         const pool = new db.ConnectionPool(dbConfig());
         return await pool.connect()

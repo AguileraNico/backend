@@ -14,6 +14,9 @@ export class ProdeService {
             case '/user-fixture': {
                 return await this.controller.userFixture(this.req.body);
             }
+            case '/user-history': {
+                return await this.controller.userHistory(this.req.body);
+            }
         }
     }
 

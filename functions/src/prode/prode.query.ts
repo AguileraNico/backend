@@ -1,4 +1,5 @@
 export const queries = {
     saveUserMatch: 'sp_saveUserMatch',
-    userFixture: 'sp_LastRoundProde'
+    userHistory: 'sp_userHistory',
+    userFixtureProde: 'sp_userFixtureProde'
 }
